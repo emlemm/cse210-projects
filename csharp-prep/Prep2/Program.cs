@@ -29,6 +29,15 @@ class Program
         {
             Console.WriteLine("F");
         }
+
+        if (numberGrade >= 70)
+        {
+            Console.WriteLine("Congratulations, you passed the course.");
+        }
+        else 
+        {
+            Console.WriteLine("Keep working hard, you'll get it next time.");
+        }
     }
 }
     
