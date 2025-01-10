@@ -31,8 +31,20 @@ class Program
             letterGrade = "F";
         }
         
+        int remainder = numberGrade % 10;
+        string plusOrMinus = "";
+
+        if (remainder >= 7)
+        {
+            plusOrMinus = "+";
+        }
+        else if (remainder < 3)
+        {
+            plusOrMinus = "-";
+        }
+                
         Console.WriteLine("");
-        Console.WriteLine($"Your grade is a(n) {letterGrade}.");
+        Console.WriteLine($"Your grade is a(n) {letterGrade}{plusOrMinus}.");
 
         if (numberGrade >= 70)
         {
