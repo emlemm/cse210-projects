@@ -34,11 +34,11 @@ class Program
         int remainder = numberGrade % 10;
         string plusOrMinus = "";
 
-        if (remainder >= 7 && letterGrade != "A")
+        if (remainder >= 7 && !(letterGrade == "A" || letterGrade == "F"))
         {
             plusOrMinus = "+";
         }
-        else if (remainder < 3)
+        else if (remainder < 3 && letterGrade != "F")
         {
             plusOrMinus = "-";
         }
