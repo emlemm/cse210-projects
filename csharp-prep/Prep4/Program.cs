@@ -18,16 +18,21 @@ class Program
             }
         } while (numberAdded != 0);
         
+        // Core #1
         int sum = 0;
-        float average;
-        int largest;
         foreach (int num in numbers)
         {
             sum += num;
         }
         Console.WriteLine($"The sum is: {sum}");
-        average = ((float)sum) / numbers.Count;
+
+        // Core #2
+        float average = ((float)sum) / numbers.Count;
         Console.WriteLine($"The average is {average}");
 
+        // Core #3
+        numbers.Sort();
+        int largest = numbers.Last();
+        Console.Write($"The largest number is: {largest}");
     }
 }
