@@ -20,7 +20,16 @@ class Program
         journalPrompts._promptList.Add("How could I be a better person tomorrow?");
         journalPrompts._promptList.Add("Who is somebody that I can help tomorrow?");
         journalPrompts._promptList.Add("What was the best thing that I ate today?");
+        
+        // Testing
+        string userPrompt = journalPrompts.GetRandomPrompt();
+        Console.WriteLine(userPrompt);
 
-        journalPrompts.DisplayPrompt();
+        Entry testEntry = new Entry();
+        testEntry._prompt = userPrompt;
+        testEntry._entry = "My entry here. Yippee!";
+        testEntry._date = testEntry.GenerateDate();
+        testEntry.Display();
+        
     }
 }
