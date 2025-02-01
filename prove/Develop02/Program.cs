@@ -31,5 +31,9 @@ class Program
         testEntry._date = testEntry.GenerateDate();
         testEntry.Display();
         
+        // MENU
+        
+        //Console.WriteLine("What is the filename?");
+        //fileName = Console.ReadLine();
     }
 }
