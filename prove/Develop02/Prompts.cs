@@ -8,10 +8,10 @@ public class Prompts
     //_promptList.Add
     public int _randomInt;
 
-    public void DisplayPrompt() 
+    public string GetRandomPrompt() 
     {   
         _randomInt = GenerateRandomInt();
-        Console.WriteLine(_promptList[_randomInt]);
+        return _promptList[_randomInt];
     }
 
     public int GenerateRandomInt()
