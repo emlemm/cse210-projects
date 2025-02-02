@@ -1,6 +1,7 @@
 // Program will open the menu, which the user will use to choose an action
 // Program uses Prompts class to display a prompt to the user
 // Program creates an Entry and adds it to a Journal object
+// Exceeded core requirements by creating methods for Program class
 
 using System;
 using System.IO;
