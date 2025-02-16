@@ -12,8 +12,6 @@ using System.Collections.Generic;
     private int _startVerse;
     private int _endVerse;
 
-    // private bool _isMultiVerse = false;
-
     public Reference(string book, int chapter, int verse)
     {
         _book = book;
@@ -22,7 +20,7 @@ using System.Collections.Generic;
         _endVerse = verse;
     }
 
-        public Reference(string book, int chapter, int verse, int endVerse)
+    public Reference(string book, int chapter, int verse, int endVerse)
     {
         _book = book;
         _chapter = chapter;
@@ -32,13 +30,13 @@ using System.Collections.Generic;
 
     public void Display()
     {
-        if (_startVerse != _endVerse)
+        if (_startVerse == _endVerse)
         {    
-            Console.WriteLine($"{_book} {_chapter}:{_startVerse}");
+            Console.Write($"{_book} {_chapter}:{_startVerse}");
         }
         else 
         {
-            Console.WriteLine($"{_book} {_chapter}:{_startVerse}-{_endVerse}");
+            Console.Write($"{_book} {_chapter}:{_startVerse}-{_endVerse}");
         }
     }
 

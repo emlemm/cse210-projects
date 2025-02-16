@@ -25,4 +25,22 @@ public class Word
     {
         _isHidden = false;
     }
+
+    public void Display()
+    {
+        if (!_isHidden)
+        { 
+            Console.Write($" {_text}");
+        }
+        else
+        {
+            Console.Write(" ");
+            Console.Write(new String('_', _text.Length));
+        }
+    }
+
+    public bool IsHidden()
+    {
+        return _isHidden;
+    }
 }
