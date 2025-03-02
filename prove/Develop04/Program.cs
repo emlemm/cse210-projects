@@ -4,16 +4,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        Activity testActivity = new Activity("Test", "I'm testing.");
-
+        BreathingActivity testActivity = new BreathingActivity();
+        testActivity.LaunchActivity();
         //testActivity.CountdownTimer(5);
         //Thread.Sleep(1000);
-        //testActivity.LoadingAnimation(4);
+        //testActivity.LoadingAnimation(8);
 
-        testActivity.LaunchActivity();
+        //testActivity.LaunchActivity();
     }
 
-    static void Menu()
+    public static void Menu()
     {
         Console.WriteLine("Menu Options: ");
         Console.WriteLine("  1. Start Breathing Activity");
@@ -28,7 +28,7 @@ class Program
         // {
         //     case "1":
         //         BreathingActivity breathing = new BreathingActivity();
-        //         breathing._time = breathing.StartMessage();
+        //         breathing.LaunchActivity();
         //         break;
         //     case "2":
         //         ReflectingActivity reflecting = new ReflectingActivity();

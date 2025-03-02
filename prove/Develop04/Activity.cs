@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-//abstract 
-public class Activity
+
+abstract public class Activity
 {
     protected string _name = "";
     protected string _description = "";
@@ -31,7 +31,6 @@ public class Activity
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
-        Console.WriteLine("Done.");
     }
 
     public void LoadingAnimation(int seconds)
@@ -57,9 +56,11 @@ public class Activity
     {
         Console.WriteLine($"Well done!! \n\nYou have completed another {_time} seconds of the {_name}.");
         LoadingAnimation(5);
+        Console.Clear();
+        Program.Menu();
     }
 
-    public void LaunchActivity()
+    public virtual void LaunchActivity()
     {
         StartMessage();
         Thread.Sleep(400);
