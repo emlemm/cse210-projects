@@ -15,18 +15,18 @@ public class ReflectingActivity : Activity
         Console.WriteLine($"\n --- {prompt} ---");
         Console.WriteLine("\nWhen you have something in mind, press enter to continue.");
         Console.ReadLine();
-        Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
+        Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
         Console.Write("You may begin in: ");
-        base.CountdownTimer(5);
+        base.CountdownTimer(3);
 
         Console.Clear();
 
-        int iterations = _time/10;
+        int iterations = Math.Max(1,_time/8);
         for (int i = iterations; i > 0; i--)
         {
             string question = Prompt.GetRandomPrompt(_questionsList);
             Console.Write($"> {question} ");
-            base.LoadingAnimation(10);
+            base.LoadingAnimation(Math.Min(_time,8));
             Console.WriteLine();
         }
         Console.WriteLine();

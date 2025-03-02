@@ -13,7 +13,7 @@ public class ListingActivity : Activity
         string prompt = Prompt.GetRandomPrompt(_promptsList);
         Console.WriteLine($"\n --- {prompt} ---");
         Console.Write("\nYou may begin in: ");
-        base.CountdownTimer(5);
+        base.CountdownTimer(3);
         Console.WriteLine();
         
         DateTime futureTime = DateTime.Now.AddSeconds(_time);
