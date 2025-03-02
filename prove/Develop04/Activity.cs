@@ -15,18 +15,10 @@ abstract public class Activity
         _description = description;
     }
 
-    // public static int GetTime()
-    // {
-    //     Console.Write("How long, in seconds, would you like for your session? ");
-    //     int time = int.Parse(Console.ReadLine());
-    //     return time;
-    // }
-
     public void CountdownTimer(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
-            //Console.Clear();
             Console.Write(i);
             Thread.Sleep(1000);
             Console.Write("\b \b");
@@ -37,7 +29,6 @@ abstract public class Activity
     {
         for (int i = seconds*2; i > 0; i--)
         {
-            //Console.Clear();
             Console.Write(_loadingList[i%_loadingList.Count]);
             Thread.Sleep(500);
             Console.Write("\b \b");
@@ -67,6 +58,5 @@ abstract public class Activity
         Console.Clear();
         Console.WriteLine("Get ready...");
         LoadingAnimation(5);
-        //EndMessage();
     }
 }

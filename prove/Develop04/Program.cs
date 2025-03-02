@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        BreathingActivity testActivity = new BreathingActivity();
+        ReflectingActivity testActivity = new ReflectingActivity();
         testActivity.LaunchActivity();
         //testActivity.CountdownTimer(5);
         //Thread.Sleep(1000);
