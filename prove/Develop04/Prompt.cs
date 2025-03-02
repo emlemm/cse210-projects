@@ -2,8 +2,6 @@ using System;
 
 public class Prompt
 {
-    //public string _promptText = "";
-
     public static List<string> Load(string fileName)
     {
         List<string> promptList = new List<string>();

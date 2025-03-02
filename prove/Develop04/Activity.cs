@@ -46,17 +46,18 @@ abstract public class Activity
     public void EndMessage()
     {
         Console.WriteLine($"Well done!! \n\nYou have completed another {_time} seconds of the {_name}.");
-        LoadingAnimation(5);
+        LoadingAnimation(3);
         Console.Clear();
         Program.Menu();
     }
 
     public virtual void LaunchActivity()
     {
+        Console.Clear();
         StartMessage();
         Thread.Sleep(400);
         Console.Clear();
         Console.WriteLine("Get ready...");
-        LoadingAnimation(5);
+        LoadingAnimation(3);
     }
 }

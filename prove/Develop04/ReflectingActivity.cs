@@ -14,6 +14,7 @@ public class ReflectingActivity : Activity
         string prompt = Prompt.GetRandomPrompt(_promptsList);
         Console.WriteLine($"\n --- {prompt} ---");
         Console.WriteLine("\nWhen you have something in mind, press enter to continue.");
+        Console.ReadLine();
         Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
         Console.Write("You may begin in: ");
         base.CountdownTimer(5);
