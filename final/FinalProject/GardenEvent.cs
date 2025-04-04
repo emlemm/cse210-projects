@@ -1,33 +1,42 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 
 abstract public class GardenEvent
 {
     protected string _name;
     protected Plant _plantType;
-    protected string _instructions;
-    protected int _howOften;
+    protected string _eventDate;
 
-    public GardenEvent(string name, Plant plantType, int howOften)
+    public GardenEvent(string name, Plant plantType, string eventDate)
     {
         _name = name;
         _plantType = plantType;
-
-        _instructions = SetInstructions();
-        _howOften = howOften;
+        _eventDate = eventDate;
     }
 
-    public abstract string SetInstructions();
+    public virtual string Serialize()
+    {
+        return $"{_name}|{_plantType}|{_eventDate}";
+    }
 
-    public abstract string Serialize();
-
-    public abstract string Method();
-
-    public string GetDate()
+    public static string GetDate()
     {
         DateTime currentTime = DateTime.Now;
         string dateText = currentTime.ToShortDateString();
-        return dateText;
+        Console.Write("Was this today?");
+        string response = Console.ReadLine();
+        string lowerResponse = response.ToLower();
+        if (response == "yes")
+        {
+            return dateText;
+        }
+        else 
+        {
+            Console.Write("Please enter the date for this event (MM/DD/YYYY eg: 01/31/2005): ");
+            string editedDate = Console.ReadLine();
+            return editedDate;
+        }
     }
 }

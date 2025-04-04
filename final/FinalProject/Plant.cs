@@ -28,13 +28,18 @@ public class Plant
     public string SetDescription()
     {
         return $@"
-{_name} 
-    - {_name} are a {DisplayPerennial()}
-    - It is best to {DisplaySeeds()}
-    - You should plant {_sqFtAmount} {SeedsOrStart()} per 1 square foot of garden space, evenly spaced apart and to a depth of {_depth}.
-    - You should expect to get up to {_expectedHarvest} {_harvestUnits} from this plant by the end of the growing season.";
+    {_name}: 
+- {_name} are a {DisplayPerennial()}
+- It is best to {DisplaySeeds()}
+- You should plant {_sqFtAmount} {SeedsOrStart()} for each square foot of garden space, evenly spaced apart and to a depth of {_depth}.
+- You should expect to get up to {_expectedHarvest} {_harvestUnits} from this plant by the end of the growing season.
+";
     }
 
+    public override string ToString()
+    {
+        return SetDescription();
+    }
     public string DisplayPerennial()
     {
         if (_perennial)
@@ -43,7 +48,7 @@ public class Plant
         }
         else
         {
-            return "annual plant, which means that it will not come regrow in the spring and must be replanted every year.";
+            return "annual plant, which means that it will not come back or regrow in the spring and must be replanted every year.";
         }
     }
         
@@ -73,5 +78,10 @@ public class Plant
     public string GetName()
     {
         return _name;
+    }
+
+    public string GetHarvestUnits()
+    {
+        return _harvestUnits;
     }
 }

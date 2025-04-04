@@ -5,29 +5,44 @@ public class PlantingEvent : GardenEvent
 {
     private int _sqFeet;
 
-    public PlantingEvent(string name, Plant plantType, int howOften, int sqFeet) : base(name, plantType, howOften)
+    public PlantingEvent(Plant plantType, string eventDate, int sqFeet) 
+    : base("Planted", plantType, eventDate)
     {
+        _eventDate = eventDate;
         _sqFeet = sqFeet;
     }
-
-    // Will fill this in later-
-    public override string SetInstructions()
+    
+    public static PlantingEvent CreateEvent()
     {
-        string instructions = "";
-        return instructions;
+        Console.Write("What plant did you plant in your garden? ");
+        string plant = Console.ReadLine();
+        string eventDate = GetDate();
+        Console.Write($"How many square feet of {plant}s did you plant? ");
+        int sqFeet = int.Parse(Console.ReadLine());
+
+        PlantingEvent p = new PlantingEvent(plant, eventDate, sqFeet);
+        return p;
     }
 
-    // Will fill this in later-
+
+    public override string ToString()
+    {
+        string displayEvent = $@"
+Date: {_eventDate} -
+    {_name}: {_plantType.GetName}
+    Sq. Feet: {_sqFeet}
+";
+        return displayEvent;
+    }
+
     public override string Serialize()
     {
-        string serialize = "Fix this";
-        return serialize;
+      return base.Serialize() + $"|{_sqFeet}";
     }
 
-    // Will fill this in later-
-    public override string Method()
+    // Then Deserialize should return an fully fledged event by reading that simple string with the "|" as a separator
+    public static GardenEvent Deserialize(string line)
     {
-        string method = "Fix this later";
-        return method;
+        string[] parts = line.Split("|");
     }
 }
