@@ -14,22 +14,20 @@ public class PlantingEvent : GardenEvent
     
     public static PlantingEvent CreateEvent()
     {
-        Console.Write("What plant did you plant in your garden? ");
-        string plant = Console.ReadLine();
+        Plant plantObject = DeterminePlantType("plant");
         string eventDate = GetDate();
-        Console.Write($"How many square feet of {plant}s did you plant? ");
+        Console.Write($"How many square feet did you plant? ");
         int sqFeet = int.Parse(Console.ReadLine());
 
-        PlantingEvent p = new PlantingEvent(plant, eventDate, sqFeet);
+        PlantingEvent p = new PlantingEvent(plantObject, eventDate, sqFeet);
         return p;
     }
-
 
     public override string ToString()
     {
         string displayEvent = $@"
 Date: {_eventDate} -
-    {_name}: {_plantType.GetName}
+    {_name}: {_plantType.GetName()}
     Sq. Feet: {_sqFeet}
 ";
         return displayEvent;
@@ -40,9 +38,20 @@ Date: {_eventDate} -
       return base.Serialize() + $"|{_sqFeet}";
     }
 
-    // Then Deserialize should return an fully fledged event by reading that simple string with the "|" as a separator
-    public static GardenEvent Deserialize(string line)
+    public static PlantingEvent Deserialize(string line)
     {
         string[] parts = line.Split("|");
+
+        PlantingEvent p;
+        if (parts[0] == "Planted")
+        {
+            Plant plantName = Lookup(parts[1]);
+            p = new PlantingEvent(plantName, parts[2], int.Parse(parts[3]));
+        }
+        else 
+        {
+            throw new Exception();
+        }
+        return p;
     }
 }

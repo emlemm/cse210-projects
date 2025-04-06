@@ -14,11 +14,10 @@ public class PruningEvent : GardenEvent
 
     public static PruningEvent CreateEvent()
     {
-        Console.Write("What plant did you prune in your garden? ");
-        string plant = Console.ReadLine();
+        Plant plantObject = DeterminePlantType("prune");
         string eventDate = GetDate();
-        string amount = null;
 
+        string amount = null;
         while (amount == null)
         {   
             Console.Write(@"How much did you prune?
@@ -44,7 +43,7 @@ public class PruningEvent : GardenEvent
             }
         }
 
-        PruningEvent p = new PruningEvent(plant, eventDate, amount);
+        PruningEvent p = new PruningEvent(plantObject, eventDate, amount);
         return p;
     }
 
@@ -52,13 +51,30 @@ public class PruningEvent : GardenEvent
     {
         string displayEvent = $@"
 Date: {_eventDate} -
-    {_name}: {_plantType.GetName}
+    {_name}: {_plantType.GetName()}
     Amount: {_amount}
 ";
         return displayEvent;
     }
-        public override string Serialize()
+    public override string Serialize()
     {
        return base.Serialize() + $"|{_amount}";
+    }
+    
+    public static PruningEvent Deserialize(string line)
+    {
+        string[] parts = line.Split("|");
+
+        PruningEvent p;
+        if (parts[0] == "Pruned")
+        {
+            Plant plantName = Lookup(parts[1]);
+            p = new PruningEvent(plantName, parts[2], parts[3]);
+        }
+        else 
+        {
+            throw new Exception();
+        }
+        return p;
     }
 }

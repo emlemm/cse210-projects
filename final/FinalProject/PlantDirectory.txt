@@ -1,0 +1,14 @@
+Beets|5-8 days|60-90 days after planting. Harvest when they are about the size of a golf ball|false|true|3/4 inch
+Cabbages|7-12 days|60-100 days after transplanting|false|false|1/4 inch
+Carrots|7-21 days|60-80 days after planting|false|true|1/4 inch
+Cucumbers|4-10 days|50-70 days after planting|false|true|1 inch
+Eggplants|10-14 days|60-90 days after transplanting|false|false|1/2 inch
+Lettuce|7-14 days|within a few weeks. Depending on variety, you can pick individual leaves as soon as they appear, or harvest the entire head of lettuce after 60 days|false|true|1/8 inch
+Onions|4-10 days|90-110 days, depending on variety|false|false|1/4 inch
+Peas|7-14 days|50-70 days after planting. Peas can be harvested in the snap/green stage, the shelling stage, or the dry stage.|false|true|1/2 to 1 inch
+Peppers|14-18 days|60-90 days after transplanting for most sweet peppers mature; hot peppers can take up to 150 days|false|false|1/4 inch
+Potatoes|14-28 days|80 or more days ater planting. Harvest baby potatoes 2-3 weeks after the plants have finished flowering. Remove the biggest new potatoes and leave the smaller ones in place so they can continue to grow|false|false|6 to 8 inches
+Radishes|3-12 days|30-45 days after planting. Harvest when leaves are 6 inches tall|false|true|1/2 inch
+Squash|5-10 days|typically between 60-90 days. As there are four different species in the squash family, harvest time varies by species and variety|false|true|1 inch
+Tomatoes|7-14 days|7-8 weeks after transplanting for determinate (or “bush”) types and about 10-12 weeks after for indeterminate varieties|false|false|1/4 inch
+Watermelons|4-12 days|100-120 days after planting. Watermelons are typically ripe when they sound taut and hollow to a tap from the knuckle|false|true|1/2 inch

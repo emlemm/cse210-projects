@@ -17,10 +17,10 @@ public class HarvestingEvent : GardenEvent
     
     public static HarvestingEvent CreateEvent()
     {
-        Console.Write("What plant did you harvest in your garden? ");
-        string plant = Console.ReadLine();
+        Plant plantObject = DeterminePlantType("harvest");
         string eventDate = GetDate();
-        Console.Write($"How many {_plantType.GetHarvestUnits} did you harvest? ");
+
+        Console.Write($"How much did you harvest? (Please enter a number): ");
         int yield = int.Parse(Console.ReadLine());
         
         bool? harvestAgain = null;
@@ -41,7 +41,7 @@ public class HarvestingEvent : GardenEvent
                 Console.Write("Please enter yes or no: ");
             }
         }
-        HarvestingEvent p = new HarvestingEvent(plant, eventDate, yield, harvestAgain);
+        HarvestingEvent p = new HarvestingEvent(plantObject, eventDate, yield, harvestAgain);
         return p;
     }
 
@@ -49,8 +49,8 @@ public class HarvestingEvent : GardenEvent
     {
         string displayEvent = $@"
 Date: {_eventDate} -
-    {_name}: {_plantType.GetName}
-    Yield: {_yield} {_plantType.GetHarvestUnits}
+    {_name}: {_plantType.GetName()}
+    Yield: {_yield} {_plantType.GetName()}
     Can Harvest Again? {HarvestAgain()}
 ";
         return displayEvent;
@@ -61,6 +61,22 @@ Date: {_eventDate} -
        return base.Serialize() + $"|{_yield}|{_harvestAgain}";
     }
 
+    public static HarvestingEvent Deserialize(string line)
+    {
+        string[] parts = line.Split("|");
+
+        HarvestingEvent h;
+        if (parts[0] == "Harvested")
+        {
+            Plant plantName = Lookup(parts[1]);
+            h = new HarvestingEvent(plantName, parts[2], int.Parse(parts[3]), bool.Parse(parts[4]));
+        }
+        else 
+        {
+            throw new Exception();
+        }
+        return h;
+    }
     public string HarvestAgain()
     {
         if ((bool)_harvestAgain)

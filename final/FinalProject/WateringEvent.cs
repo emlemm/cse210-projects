@@ -17,8 +17,7 @@ public class WateringEvent : GardenEvent
     
     public static WateringEvent CreateEvent()
     {
-        Console.Write("What plant did you water in your garden? ");
-        string plant = Console.ReadLine();
+        Plant plantObject = DeterminePlantType("water");
         string eventDate = GetDate();
         
         string time = null;
@@ -67,7 +66,7 @@ public class WateringEvent : GardenEvent
             }
         }
 
-        WateringEvent w = new WateringEvent(plant, eventDate, time, amount);
+        WateringEvent w = new WateringEvent(plantObject, eventDate, time, amount);
         return w;
     }
 
@@ -75,7 +74,7 @@ public class WateringEvent : GardenEvent
     {
         string displayEvent = $@"
 Date: {_eventDate} -
-    {_name}: {_plantType.GetName}
+    {_name}: {_plantType.GetName()}
     When: {_timeOfDay}
     Amount: {_amount}
 ";
@@ -85,5 +84,25 @@ Date: {_eventDate} -
     public override string Serialize()
     {
        return base.Serialize() + $"|{_timeOfDay}|{_amount}";
+    }
+
+    public static WateringEvent Deserialize(string line)
+    {
+        string[] parts = line.Split("|");
+
+        WateringEvent w;
+        if (parts[0] == "Watered")
+        {
+            Plant plantName = Lookup(parts[1]);
+            if (plantName == null) {
+                throw new NullReferenceException();
+            }
+            w = new WateringEvent(plantName, parts[2], parts[3], parts[4]);
+        }
+        else 
+        {
+            throw new Exception();
+        }
+        return w;
     }
 }

@@ -5,41 +5,40 @@ using System.IO;
 public class Plant
 {
     private string _name;
-    private string _description;
-    private int _sqFtAmount;
-    private int _expectedHarvest;
-    private string _harvestUnits;
-    private bool _perennial;
+    private string _timeToGermination;
+    private string _whenToHarvest;
     private bool _seeds;
     private string _depth;
+    private bool _perennial;
+    private string _description;
 
-    public Plant(string name, int sqFtAmount, int expectedHarvest, string harvestUnits, bool perennial, bool seeds, string depth)
+    public Plant(string name, string timeToGermination, string whenToHarvest, bool perennial, bool seeds, string depth)
     {
         _name = name;
-        _sqFtAmount = sqFtAmount;
-        _expectedHarvest = expectedHarvest;
-        _harvestUnits = harvestUnits;
+        _timeToGermination = timeToGermination;
+        _whenToHarvest = whenToHarvest;
         _perennial = perennial;
         _seeds = seeds;
         _depth = depth;
-        _description = SetDescription();
+        _description = GetDescription();
     }
 
-    public string SetDescription()
+    public string GetDescription()
     {
-        return $@"
-    {_name}: 
-- {_name} are a {DisplayPerennial()}
+        return $@"{_name}: 
 - It is best to {DisplaySeeds()}
-- You should plant {_sqFtAmount} {SeedsOrStart()} for each square foot of garden space, evenly spaced apart and to a depth of {_depth}.
-- You should expect to get up to {_expectedHarvest} {_harvestUnits} from this plant by the end of the growing season.
+- You should plant the {SeedsOrStart()} evenly spaced apart and to a depth of {_depth}.
+- Time to germination after planting or transplanting is between {_timeToGermination}.
+- You should expect to be able to harvest {_whenToHarvest}.
+- {_name} are a {DisplayPerennial()}
 ";
     }
 
     public override string ToString()
     {
-        return SetDescription();
+        return GetName();
     }
+    
     public string DisplayPerennial()
     {
         if (_perennial)
@@ -51,7 +50,15 @@ public class Plant
             return "annual plant, which means that it will not come back or regrow in the spring and must be replanted every year.";
         }
     }
-        
+
+    public static Plant Deserialize(string line)
+    {
+        Plant p;
+        string[] parts = line.Split("|");
+        p = new Plant(parts[0], parts[1], parts[2], bool.Parse(parts[3]), bool.Parse(parts[4]), parts[5]);
+        return p;
+    }
+
     public string DisplaySeeds()
     {
         if (_seeds)
@@ -60,9 +67,10 @@ public class Plant
         }
         else
         {
-            return "use starts for this plant (that you have either purchased or grown from seed yourself.";
+            return "use starts for this plant (that you have either purchased or grown from seed yourself.)";
         }
     }
+    
     public string SeedsOrStart()
     {
         if (_seeds)
@@ -78,10 +86,5 @@ public class Plant
     public string GetName()
     {
         return _name;
-    }
-
-    public string GetHarvestUnits()
-    {
-        return _harvestUnits;
     }
 }
